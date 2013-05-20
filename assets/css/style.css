@@ -1,0 +1,19 @@
+/* 
+    Document   : style
+    Created on : 20 mai 2013, 18:09:18
+    Author     : JavaJazz
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root
+{ 
+    display: block;
+}
+
+.accroche
+{
+    size:5px;
+    color:blue;
+}
+
