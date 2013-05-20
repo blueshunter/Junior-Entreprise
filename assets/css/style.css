@@ -5,7 +5,12 @@
     Description:
         Purpose of the stylesheet follows.
 */
+html { 
+  margin:0;
+  padding:0;
+  background-image: url("../img/abstract_colors_espiro_gray.jpeg"); 
 
+}
 root
 { 
     display: block;

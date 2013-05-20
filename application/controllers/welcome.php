@@ -7,6 +7,10 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('welcome_message');
 	}
+        public function deconnexion()
+	{
+		$this->load->view('welcome_deconnexion');
+	}
 }
 
 /* End of file welcome.php */
