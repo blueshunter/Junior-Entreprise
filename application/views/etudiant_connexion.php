@@ -7,8 +7,8 @@
 <div class="hero-unit">
     
     <ul class="breadcrumb">
-        <li><a href="<?php echo base_url('Welcome/projets') ?>">Home</a> <span class="divider">/</span></li>
-        <li><a href="<?php echo base_url('Entreprise/projets') ?>">Entreprise</a> <span class="divider">/</span></li>
+        <li><a href="<?php echo base_url('Welcome/index') ?>">Home</a> <span class="divider">/</span></li>
+        <li><a href="<?php echo base_url('Entreprises/projets') ?>">Etudiant</a> <span class="divider">/</span></li>
         <li class="active">Tarifs</li>
     </ul>
     <h1>Etudiant <small> Connexion</small></h1>
