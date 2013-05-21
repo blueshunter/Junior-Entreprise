@@ -20,5 +20,9 @@ class Etudiants extends CI_Controller {
         {
 		$this->load->view('etudiant_remuneration');
 	}  
+         public function connexion()
+        {
+		$this->load->view('etudiant_connexion');
+	} 
         
 }

@@ -20,4 +20,8 @@ class Entreprises extends CI_Controller {
 	{
 		$this->load->view('entreprise_tarifs');
 	}
+        public function connexion()
+	{
+		$this->load->view('entreprise_connexion');
+	}
 }
