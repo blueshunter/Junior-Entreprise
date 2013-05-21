@@ -9,7 +9,16 @@ class Etudiants extends CI_Controller {
 	}
         
         public function intro()
-         {
+        {
 		$this->load->view('etudiant_intro');
-	}      
+	}  
+         public function dispo()
+        {
+		$this->load->view('etudiant_dispo');
+	}  
+         public function remuneration()
+        {
+		$this->load->view('etudiant_remuneration');
+	}  
+        
 }

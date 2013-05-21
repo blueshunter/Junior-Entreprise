@@ -3,11 +3,16 @@
     $this->load->view('navbar');
 ?>
 
-<ul class="breadcrumb">
-  <li><a href="<?php echo base_url('Welcome/index') ?>">Home</a> <span class="divider">/</span></li>
-  <li class="active">Déconnexion</li>
-</ul>
 
+<div class="hero-unit">
+    <ul class="breadcrumb">
+        <li><a href="<?php echo base_url('Welcome/index') ?>">Home</a> <span class="divider">/</span></li>
+        <li class="active">Déconnexion</li>
+    </ul>
+    <h1>Junior Entreprise <small> déconnexion</small></h1>
+    
+   
+ </div>
 
 <?php
     $this->load->view('footer');

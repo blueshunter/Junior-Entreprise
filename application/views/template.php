@@ -12,6 +12,6 @@
         <link href="assets/css/bootstrap-responsive.min.css" rel="stylesheet">
         <title> - Junior Entreprise - </title>
     </head>
-    <body>
+    <body class="container">
 
     
