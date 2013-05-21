@@ -23,7 +23,7 @@
  </div>
  <div class="hero-unit">
      <h3>Nouvelle inscription !</h3>
-     <a class="btn" href="#">Join Us</a>
+     <a class="btn" href="<?php echo base_url('Entreprises/inscription') ?>">Join Us</a>
  </div>
 
 <?php

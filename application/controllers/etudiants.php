@@ -24,5 +24,9 @@ class Etudiants extends CI_Controller {
         {
 		$this->load->view('etudiant_connexion');
 	} 
+        public function inscription()
+	{
+		$this->load->view('etu_inscr');
+	}
         
 }

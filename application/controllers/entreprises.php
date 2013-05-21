@@ -24,4 +24,8 @@ class Entreprises extends CI_Controller {
 	{
 		$this->load->view('entreprise_connexion');
 	}
+        public function inscription()
+	{
+		$this->load->view('entreprise_inscr');
+	}
 }
