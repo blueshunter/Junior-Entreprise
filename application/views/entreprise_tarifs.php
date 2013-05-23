@@ -9,7 +9,7 @@
     <ul class="breadcrumb">
         <li><a href="<?php echo base_url('Welcome/index') ?>">Home</a> <span class="divider">/</span></li>
         <li><a href="<?php echo base_url('Entreprises/projets') ?>">Entreprise</a> <span class="divider">/</span></li>
-        <li class="active">Tarifs/li>
+        <li class="active">Tarifs</li>
     </ul>
     <h1>Entreprise <small> Tarifs</small></h1>
     

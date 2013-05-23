@@ -46,6 +46,20 @@
                 </ul >
             </li>
             <li class="divider"></li>
+            <?php 
+                if(($log)==true)
+                {
+                    echo"<li>";
+                    echo"bienvenue ".$nom;
+                    echo"</li>";
+                }
+                else
+                {
+                    echo'<li class="dropdown pull-right">';
+                    echo"utilisateur non connecté";
+                    echo"</li>";
+                }
+            ?>
            
         </ul>
    
