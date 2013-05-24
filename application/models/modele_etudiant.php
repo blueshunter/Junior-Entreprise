@@ -30,7 +30,7 @@ Class Modele_etudiant extends CI_Model
         if($q->num_rows() > 0)
         {
              $r = $q->result();
-             $session_data = array('mail' => $r[0]->username,'logged_in' => true);
+             $session_data = array('logged_in' => true);
              $this->session->set_userdata($session_data);
              // variable de session, on enregistre cet utilisateur comme loggé
              return true;

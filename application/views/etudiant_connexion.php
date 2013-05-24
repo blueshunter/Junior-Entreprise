@@ -16,7 +16,11 @@
     <form class="form-inline">
         <input type="text" class="input-small" placeholder="Email"></br>
         <input type="password" class="input-small" placeholder="Password"></br>
-        <button type="submit" class="btn">Sign in</button></br>
+        
+        <?php 
+        //<button type="submit" class="btn">Sign in</button></br>
+        echo form_submit("connexionEtu","Enregistrer")."</br>";
+        ?>
     </form>
     </div>
  </div>

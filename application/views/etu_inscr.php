@@ -15,20 +15,24 @@
     <p>Déja inscrit ?</p>
     <?php echo form_open('Etudiants/inscription'); ?>
     <form class="form-inline">
-        <input type="text" class="input-small" name="Email" placeholder="Email"></br>
-        <input type="password" class="input-small" name="mot de passe" placeholder="mot de passe"></br>
+        <input type="text" class="input-small" name="mail" placeholder="mail"></br>
+        <input type="password" class="input-small" name="mdp" placeholder="mot de passe"></br>
         <input type="text" class="input-small" name="nom" placeholder="nom"></br>
         <input type="text" class="input-small" name="prenom" placeholder="prenom"></br>
-        <input type="text" class="input-small" name="date de naissance" placeholder="date de naissance"></br>
+        <input type="text" class="input-small" name="date_naiss" placeholder="date de naissance"></br>
         <input type="text" class="input-small" name="tel" placeholder="tel"></br>
-        <select placeholder="dommaine">
+        <select name="domaine" placeholder="dommaine">
             <option>developpement Web</option>
             <option>developpement mobile</option>
             <option>developpement logiciel</option>
             <option>Réseau et Telecom</option>
             <option>Management</option>
         </select></br>
-        <button type="submit" value="Submit"   class="btn">Sign in</button></br>
+        
+        <?php 
+        //<button type="submit" value="Submit"   class="btn">Sign in</button></br>
+        echo form_submit("add_folder","Enregistrer")."</br>";
+        ?>
     </form>
     </div>
  </div>

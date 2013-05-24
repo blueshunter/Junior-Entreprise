@@ -22,7 +22,6 @@ class Etudiants extends CI_Controller
                 $data=array('log'=>false,'nom'=>'','type'=>'etu');
                 $this->load->view('etudiant_intro',$data);
             }
-	$this->load->view('etudiant_intro');
 	}
         
         public function intro()
@@ -41,15 +40,55 @@ class Etudiants extends CI_Controller
 	}  
          public function dispo()
         {
-		$this->load->view('etudiant_dispo');
+            if($this->modele_etudiant->isLoggedIn())
+            {
+               $data=array('log'=>true,'nom'=>'MR.','type'=>'etu');
+               $this->load->view('etudiant_dispo',$data);
+            } 
+            else
+            {
+                $data=array('log'=>false,'nom'=>'','type'=>'etu');
+                $this->load->view('etudiant_dispo',$data);
+            }
+
 	}  
          public function remuneration()
         {
-		$this->load->view('etudiant_remuneration');
+            if($this->modele_etudiant->isLoggedIn())
+            {
+               $data=array('log'=>true,'nom'=>'MR.','type'=>'etu');
+               $this->load->view('etudiant_remuneration',$data);
+            } 
+            else
+            {
+                $data=array('log'=>false,'nom'=>'','type'=>'etu');
+                $this->load->view('etudiant_remuneration',$data);
+            }
+	
 	}  
          public function connexion()
         {
-		$this->load->view('etudiant_connexion');
+            
+            if (/*$this->form_validation->run() == FALSE*/isset($_POST['add_folder']) == FALSE)
+            {
+                if($this->modele_etudiant->isLoggedIn())
+                {
+                   $data=array('log'=>true,'nom'=>'MR.','type'=>'etu');
+                   $this->load->view('etudiant_connexion',$data);
+                } 
+                else
+                {
+                    $data=array('log'=>false,'nom'=>'','type'=>'etu');
+                    $this->load->view('etudiant_connexion',$data);
+                }
+            }
+            else
+            {
+                   //charger le modele etudiant validCredentials($mail,$mdp)
+                    $data=array('log'=>true,'nom'=>'MR. '.$_POST['nom'].'','type'=>'etu');
+                    $this->load->view('etudiant_intro',$data);
+            }
+
 	} 
         public function inscription()
 	{
@@ -60,18 +99,23 @@ class Etudiants extends CI_Controller
 
             $this->load->library('form_validation');
              
-            if (/*$this->form_validation->run() == FALSE*/isset($_POST['Submit']) == FALSE)
+            if (/*$this->form_validation->run() == FALSE*/isset($_POST['add_folder']) == FALSE)
             {
-                    $this->load->view('etu_inscr');
+                    $data=array('log'=>false,'nom'=>'','type'=>'etu');
+                    $this->load->view('etu_inscr',$data);
             }
             else
             {
-                    $this->load->view('formEtuSuccess');
+                    $data=array('log'=>false,'nom'=>'','type'=>'etu');
+                    $data=array('log'=>true,'nom'=>'MR. '.$_POST['nom'].'','type'=>'etu');
+                    $this->load->view('formEtuSuccess',$data);
             }
 	}
         public function inscriptionValide()
 	{
-             $this->load->view('formEtuSuccess');
+            $data=array('log'=>true,'nom'=>'MR.','type'=>'etu');
+            $this->load->view('formEtuSuccess',$data);
+          
         }
         
 }

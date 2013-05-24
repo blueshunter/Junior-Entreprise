@@ -49,16 +49,9 @@
             <?php 
                 if(($log)==true)
                 {
-                    echo"<li>";
-                    echo"bienvenue ".$nom;
-                    echo"</li>";
+                    echo'<li><a class="dropdown" href="#">bienvenue '.$nom.' </a></li>';
                 }
-                else
-                {
-                    echo'<li class="dropdown pull-right">';
-                    echo"utilisateur non connecté";
-                    echo"</li>";
-                }
+             
             ?>
            
         </ul>
