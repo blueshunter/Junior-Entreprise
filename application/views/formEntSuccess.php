@@ -4,7 +4,7 @@
 
 
 //Traitement des données du formulaire
-$query = $this->db->query("Select * from etudiant order by id desc");
+$query = $this->db->query("Select * from entrprise order by id desc");
 $row = $query->row_array(); 
 if ($query->num_rows() == 0)
 {
@@ -15,32 +15,32 @@ else
     $inc=$row['id'] +1;
 }
 
-
 $nom = str_replace(' ', '_',$_POST['nom']);
+
 //Récupération des variables post
-if(isset($_POST['add_folder']))
+if(isset($_POST["inscriptionEntreprise"]))
 {
     $newUser = array(
 
     'id'=>$inc,
     'nom'=>$nom,
-    'prenom'=>$_POST['prenom'],
-    'mdp'=>sha1($_POST['mdp']),
     'mail'=>$_POST['mail'],
+    'mdp'=>sha1($_POST['mdp']),
     'tel'=>$_POST['tel'],
+    'adresse'=>$_POST['adresse'],
     'domaine'=>$_POST['domaine'],
-    'date_naiss'=>$_POST['date_naiss'],
     'etat'=>"non valide"
+
 
 
     );
     //Insert
-    $this->db->insert('etudiant', $newUser); 
+    $this->db->insert('entrprise', $newUser); 
 
     echo '<p>Enregistrement inséré</p>';
 }
                 
-echo "<p>".anchor('etudiants','retour')."</p>"; 
+echo "<p>".anchor('Entreprises/administration','retour')."</p>"; 
 
 
 $this->load->view('footer');

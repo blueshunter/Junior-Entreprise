@@ -8,12 +8,16 @@ Class Modele_etudiant extends CI_Model
         $infos=array();
     }
 
-    function getAll()
+    function getAll($nom,$mail)
     { 
-        $query = $this->db->get('etudiant');
-        $infos = $query->result(); 
-        $query->free_result(); 
-        return $infos; 
+        $query = $this->db->get_where('etudiant',array('mail'=>$mail,'nom'=>$nom));
+        if ($query->num_rows() > 0)
+        {
+           $row = $query->row(); 
+     
+       
+        }
+        return $row; 
         
     }
 
@@ -21,19 +25,28 @@ Class Modele_etudiant extends CI_Model
     {
         $this->load->library('encrypt');
 
-        $password = $this->encrypt->sha1($password);
+        $password = $this->encrypt->sha1($mdp);
 
-        $q = "SELECT * FROM users WHERE mail = ? AND mdp = ?";
-        $data = array($mail,$mdp);
+        $q = "SELECT * FROM etudiant WHERE mail = ? AND mdp = ?";
+        $data = array($mail,$password);
         $q = $this->db->query($q,$data);
-
-        if($q->num_rows() > 0)
+        
+        if($q->num_rows() > 0 )
         {
+             $row = $q->row();
              $r = $q->result();
-             $session_data = array('logged_in' => true);
+             
+             if($row->etat!="non valide")
+             {
+                 $session_data = array('nom'=>$row->nom.' '.$row->prenom,'type'=>"etu",'mail'=>$mail,'logged_in' => true);
              $this->session->set_userdata($session_data);
              // variable de session, on enregistre cet utilisateur comme loggé
              return true;
+             }
+             else
+            {
+                return false;
+            }
         } 
         else
         {
@@ -51,5 +64,12 @@ Class Modele_etudiant extends CI_Model
             return false;
         }
      }
+     function valider($nom,$mail)
+    {
+            $data = array('etat' => 'valide');
+            $this->db->where('nom',$nom);
+            $this->db->where('mail',$mail);
+            $this->db->update('etudiant', $data); 
+    }
 }
 ?>

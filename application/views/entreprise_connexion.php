@@ -13,10 +13,11 @@
     </ul>
     <h1>Entreprise <small> Connexion</small></h1>
     <p>Déja inscrit ?</p>
+    <?php echo form_open('Entreprises/connexion'); ?>
     <form class="form-inline">
-        <input type="text" class="input-small" placeholder="Email"></br>
-        <input type="password" class="input-small" placeholder="Password"></br>
-        <button type="submit" class="btn">Sign in</button></br>
+        <input type="text" class="input-small" name='mail' placeholder="Email"></br>
+        <input type="password" class="input-small" name='mdp' placeholder="Password"></br>
+        <?php echo form_submit("connexionEntreprise","envoyer"); ?>
     </form>   
     
     </div>

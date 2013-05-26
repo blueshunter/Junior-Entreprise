@@ -12,10 +12,11 @@
     </ul>
     <h1>Administration<small> Formulaire de connexion</small></h1>
     <div class="divider"></div>
+    <?php echo form_open("Admins") ?>
     <form class="form-inline">
-        <input type="text" class="input-small" placeholder="Email"></br>
-        <input type="password" class="input-small" placeholder="Password"></br>
-        <button type="submit" class="btn">Sign in</button></br>
+        <input type="text" class="input-small"  name="login" placeholder="login"></br>
+        <input type="password" class="input-small" name="mdp" placeholder="Password"></br>
+        <?php echo form_submit("connexionAdmin","enregistrer")?>
     </form> 
 
     </div>

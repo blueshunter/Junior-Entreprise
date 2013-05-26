@@ -13,9 +13,10 @@
     </ul>
     <h1>Etudiant <small> Connexion</small></h1>
     <p>Déja inscrit ?</p>
+     <?php echo form_open('Etudiants/connexion'); ?>
     <form class="form-inline">
-        <input type="text" class="input-small" placeholder="Email"></br>
-        <input type="password" class="input-small" placeholder="Password"></br>
+        <input type="text" class="input-small" name="mail" placeholder="mail"></br>
+        <input type="password" class="input-small" name="mdp" placeholder="Password"></br>
         
         <?php 
         //<button type="submit" class="btn">Sign in</button></br>
