@@ -21,7 +21,16 @@ else
     {
         $id_ent=$row2['id'];
     } 
-    $nom = str_replace(' ', '_',$_POST['nom']);
+    $nom = str_replace('\'', ' ',$_POST['nom']);
+    $nom = str_replace(' ', '_',$nom);
+    $nom = str_replace('é', 'e',$nom);
+    $nom = str_replace('à', 'a',$nom);
+    $nom = str_replace('è', 'e',$nom);
+    $nom = str_replace('ê', 'e',$nom);
+    $nom = str_replace('â', 'a',$nom);
+    $nom = str_replace('ô', 'o',$nom);
+    $nom = str_replace('î', 'i',$nom);
+
 
     $nouvelleETude = array(
 

@@ -40,7 +40,8 @@
         <h3>Mes études</h3>
         <ul>
             <?php
-                $query = $this->db->query("SELECT * FROM etude;");
+            
+                $query = $this->db->query("SELECT * FROM etude where id_entrprise='$row->id';");
                 foreach ($query->result() as $row)
                 {
                    echo "<li><a href=".base_url('Etudes/fiche/'.$row->nom).">".str_replace('_', ' ',$row->nom)."</a></li>";

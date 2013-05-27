@@ -11,6 +11,7 @@ Class Modele_etudiant extends CI_Model
     function getAll($nom,$mail)
     { 
         $query = $this->db->get_where('etudiant',array('mail'=>$mail,'nom'=>$nom));
+        //$query = $this->db->query("Select * from etudiant where mail=".$mail."and nom=".$nom.";");
         if ($query->num_rows() > 0)
         {
            $row = $query->row(); 
@@ -38,7 +39,7 @@ Class Modele_etudiant extends CI_Model
              
              if($row->etat!="non valide")
              {
-                 $session_data = array('nom'=>$row->nom.' '.$row->prenom,'type'=>"etu",'mail'=>$mail,'logged_in' => true);
+                 $session_data = array('nom'=>$row->nom,'type'=>"etu",'mail'=>$mail,'logged_in' => true);
              $this->session->set_userdata($session_data);
              // variable de session, on enregistre cet utilisateur comme loggé
              return true;

@@ -14,15 +14,6 @@
     
     </div>
  </div>
- <div class="hero-unit">
-
-     <ul>
-        <li><a href="<?php echo base_url('Admins/liste/1')?>">liste des entreprises inscrites</a></li>
-        <li><a href="<?php echo base_url('Admins/liste/2')?>">liste des etudes</a></li>
-        <li><a href="<?php echo base_url('Admins/liste/3')?>">liste des étudiants inscrits</a></li>
-     </ul>
-      
-    </div>
     <div class="hero-unit">
         <h3>Etudes en cours de validation</h3>
         <ul>

@@ -7,6 +7,7 @@ class Etudiants extends CI_Controller
        {
             parent::__construct();
             $this->load->model('modele_etudiant');
+            $this->load->model('modele_groupe');
        }
 
 
@@ -81,10 +82,31 @@ class Etudiants extends CI_Controller
 	}
         function fiche($nom,$mail)
         {
-        $data['nom']=$nom;
-        $data['mail']=$mail;
-        $this->load->view('etudiant_fiche',$data);
+            $data['nom']=$nom;
+            $data['mail']=$mail;
+            $data['etude']='';
+            $this->load->view('etudiant_fiche',$data);
         }
         
+        function ficheCandidat($nom,$mail,$etude)
+        {
+            $data['nom']=$nom;
+            $data['mail']=$mail;
+            $data['etude']=$etude;
+            $this->load->view('etudiant_fiche',$data);
+           // $this->modele_groupe->valider($nom,$mail,$etude);
+        }
+        function candidature($nomEtu,$mail,$etude)
+        {
+            if($this->modele_groupe->insert($nomEtu,$mail,$etude))
+            {
+                $this->load->view('etudiant_candidature');
+            }
+            else
+            {
+                $this->load->view('etudiant_administration');
+            }
+            
+        }
         
 }

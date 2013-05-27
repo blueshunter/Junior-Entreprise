@@ -19,7 +19,7 @@
  <div class="hero-unit">
      <ul>
             <?php
-            $query = $this->db->query("SELECT * FROM etude ;");
+            $query = $this->db->query("SELECT * FROM etude where etat='$etat' ;");
             foreach ($query->result() as $row)
             {
                echo "<li><a href=".base_url('Etudes/fiche/'.$row->nom).">".str_replace('_', ' ',$row->nom)."</a></li>";

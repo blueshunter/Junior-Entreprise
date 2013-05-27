@@ -25,6 +25,13 @@ Class Etudes extends CI_Controller
     function fiche($nom)
     {
         $data['nom']=$nom;
+        $data['candidature']="false";
+        $this->load->view('etude_fiche',$data);
+    }
+    function ficheCandidat($nom)
+    {
+        $data['nom']=$nom;
+        $data['candidature']="true";
         $this->load->view('etude_fiche',$data);
     }
 }

@@ -35,6 +35,16 @@
             echo'<form class="form-inline">';
             echo form_submit("validationEtudiant","valider");          
         }
+        if($this->session->userdata('type')=='admin'&&$this->session->userdata('logged_in')==TRUE&&$row->etat=='valide'&&$etude!='')
+        {
+                          
+            echo form_open('Admins/validationCandidature/'.$nom.'/'.$mail.'/'.$etude.'');
+            echo'<form class="form-inline">';
+            echo'<input type="checkbox" name="statut" value="true">reponsable<br>';
+     
+            echo form_submit("validationCandidature","valider la candidature");          
+        }
+        
         ?>
         
     </div>
