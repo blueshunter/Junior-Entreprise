@@ -25,5 +25,11 @@ Class Modele_Etude extends CI_Model
             $this->db->where('nom',$nom);
             $this->db->update('etude', $data); 
     }
+    function validerEnCours($id)
+    {
+            $data = array('etat' => 'en cours');
+            $this->db->where('id_etude',$id);
+            $this->db->update('etude', $data); 
+    }
 }
 ?>

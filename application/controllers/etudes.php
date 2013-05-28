@@ -19,7 +19,23 @@ Class Etudes extends CI_Controller
         }
         
     }
-    
+    function convention($id)
+    {
+        $data= array();
+        if(isset($_POST['print'])==FALSE)
+        {
+            
+             $data['print']="off";
+        }
+        else
+        {
+            $data['print']="on";
+        }
+        $data['id']=$id;
+        $this->load->view('etude_convention',$data);
+                
+
+    }
     
     
     function fiche($nom)

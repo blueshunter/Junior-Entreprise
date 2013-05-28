@@ -41,7 +41,8 @@ else
     'nom'=>$nom,
     'description'=>$_POST['description'],
     'domaine'=>$_POST['domaine'],
-    'etat'=>"non valide"
+    'etat'=>"non valide",
+    'prix'=>$_POST['prix']
     );  
 
 

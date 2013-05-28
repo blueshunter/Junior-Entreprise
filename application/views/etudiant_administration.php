@@ -37,7 +37,7 @@
         <h3>Mes études en cours</h3>
         <ul>
             <?php
-            $query = $this->db->query("SELECT * FROM groupeEtudiant JOIN etude where groupeEtudiant.id_etude=etude.id_etude and groupeEtudiant.etat='valide';");
+            $query = $this->db->query("SELECT * FROM groupeEtudiant JOIN etude where groupeEtudiant.id_etude=etude.id_etude and groupeEtudiant.etat='valide' and groupeEtudiant.id_etudiant='$row->id';");
             
             foreach ($query->result() as $row)
             {
@@ -53,12 +53,12 @@
             $query = $this->db->query("SELECT * FROM etude where etat='valide';");
             foreach ($query->result() as $row)
             {
-               $query2 = $this->db->query("SELECT * FROM groupeEtudiant  where id_etude= '$row->id_etude';");
-               $row2 = $query2->row_array(); 
-                if ($query2->num_rows() == 0)
-                {
+               //$query2 = $this->db->query("SELECT * FROM groupeEtudiant  where id_etude= '$row->id_etude';");
+               //$row2 = $query2->row_array(); 
+                //if ($query2->num_rows() == 0)
+                //{
                     echo "<li><a href=".base_url('Etudes/fiche/'.$row->nom).">".str_replace('_', ' ',$row->nom)."</a></li>";
-                } 
+                //} 
                
             }
             ?>

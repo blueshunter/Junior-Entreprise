@@ -18,6 +18,7 @@
         <input type="text" class="input-small" name="nom" placeholder="nom"></br>
         <input type="text" class="input-small" name="duree" placeholder="durée(j)"></br>
         <input type="text" class="input-small" name="date" placeholder="date début"></br>
+        <input type="text" class="input-small" name="prix" placeholder="prix/journée"></br>
         <textarea row="5" name="description" placeholder="description"></textarea></br>
         <select name="domaine" placeholder="dommaine">
             <option>developpement Web</option>

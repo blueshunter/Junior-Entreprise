@@ -38,7 +38,7 @@
         {
             $query2 = $this->db->query("SELECT * FROM groupeEtudiant  where id_etude= '$row->id_etude';");
                $row2 = $query2->row_array(); 
-                if ($query2->num_rows() == 0)
+                if ($query2->num_rows()>=0) // =0 ?  => un etudiant!
                 {
                     echo form_open('Etudiants/candidature/'.$this->session->userdata('nom').'/'.$this->session->userdata('mail').'/'.$nom);
                      echo'<form class="form-inline">';
@@ -83,9 +83,23 @@
            <h3>Convention</h3>
            
            <?php
-           if($this->session->userdata('type')=='admin'&&$this->session->userdata('logged_in')==TRUE&&$row->etat!='non valide')
+           if($this->session->userdata('type')=='admin'&&$this->session->userdata('logged_in')==TRUE&&$row->etat=='valide')
            {
-               echo '<a href="Admins/convention/'.$var.'">editer la convention</a>' ;
+
+                echo'<a  href='.base_url('Admins/convention/'.$var.'/'.$row->id_etude.'').'>editer la convention</a>';
+              
+           }
+           if($this->session->userdata('type')=='etu'||$this->session->userdata('type')=='ent'&&$this->session->userdata('logged_in')==TRUE&&$row->etat=='valide')
+           {
+
+                echo'<p>convention non éditée</p>';
+              
+           }
+           
+           if($this->session->userdata('logged_in')==TRUE&&$row->etat=='en cours')
+           {
+
+                echo'<a  href='.base_url('Etudes/convention/'.$row->id_etude.'').'>afficher la convention</a>';
               
            }
            ?>

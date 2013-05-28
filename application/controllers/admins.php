@@ -8,6 +8,7 @@ class Admins extends CI_Controller
             parent::__construct();
             $this->load->model('modele_admin');
             $this->load->model('modele_groupe');
+            $this->load->model('modele_etude');
         }
 	public function index()
 	{
@@ -36,16 +37,20 @@ class Admins extends CI_Controller
 		
 	}
         
-        function convention($nbCandidats)
+        function convention($nbCandidats,$id)
         {
             if($nbCandidats<3)
             {
+                $this->load->view('admin_convention_refusee');
                 // edition refusée
             }
             else
             {
                 // modele_etude->validerEnCours
+                $this->modele_etude->validerEnCours($id);
+                $this->load->view('admin_convention_validee');
             }
+
         }
         function validationEtude($nom)
         {
