@@ -106,7 +106,28 @@
      </div>
     <div class="hero-unit">
         <h3>Facture</h3>
-        <p>Etat : non éditée</p>
+        <?php
+        if($this->session->userdata('type')=='admin'&&$this->session->userdata('logged_in')==TRUE&&$row->etat=='en cours')
+           {
+
+                echo'<a  href='.base_url('Admins/facture/'.$row->id_etude.'').'>editer la facture</a>';
+              
+           }
+           if($this->session->userdata('type')=='etu'||$this->session->userdata('type')=='ent'&&$this->session->userdata('logged_in')==TRUE&&$row->etat=='en cours')
+           {
+
+                echo'<p>facture non éditée</p>';
+              
+           }
+           
+           if($this->session->userdata('logged_in')==TRUE&&$row->etat=='terminee')
+           {
+
+                echo'<a  href='.base_url('Etudes/facture/'.$row->id_etude.'').'>afficher la facture</a>';
+              
+           }
+           ?>
+        
     </div>
 
 <?php

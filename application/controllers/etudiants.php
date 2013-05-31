@@ -7,7 +7,10 @@ class Etudiants extends CI_Controller
        {
             parent::__construct();
             $this->load->model('modele_etudiant');
-            $this->load->model('modele_groupe');
+            $this->load->model('modele_etude');
+             $this->load->model('modele_groupe');
+             $this->load->model('acompte');
+              $this->load->model('frais');
        }
 
 
@@ -108,5 +111,56 @@ class Etudiants extends CI_Controller
             }
             
         }
+        
+        function demandeFrais($etude,$nom,$mail)
+        {
+            
+            $row=$this->modele_etudiant->getAll($nom,$mail);
+            $id = $row->id;
+            $data=array();
+            $data['etudiant']=$id;
+            $data['etude']=$etude;
+
+            $this->load->view('etudiant_demande_frais',$data);         
+        }
+        
+        function insertFrais($etudiant,$etude)
+        {
+            if (isset($_POST['insert']) == true)
+            {
+                $this->frais->insert($etude,$etudiant,$_POST['montant'],$_POST['type'],$_POST['date']);
+                $this->load->view('etudiant_administration');
+            }
+            else
+            {
+                $this->load->view('etudiant_refus');
+            }
+        }
+        function insertRemboursement($etudiant,$etude)
+        {
+            $nbEtu=$this->modele_groupe->getNbEtu($etude);
+            $montant = $this->acompte->getTotalAcompte($etude,$etudiant)+$_POST['montant'];
+            $montantAut =($this->modele_etude->getPrixEtude($etude)*(80/100))/$nbEtu;
+            echo $montantAut;
+            if (isset($_POST['insert']) == true && $this->acompte->getNbAcompte($etude,$etudiant)<3 &&$montant <=$montantAut)
+            {
+                $this->acompte->insert($etude,$etudiant,$_POST['montant']);
+                $this->load->view('etudiant_administration');
+            }
+            else
+            {
+                 $this->load->view('etudiant_refus'); 
+            }
+        }
+        function demandeRemb($etude,$nom,$mail)
+        {
+            $row=$this->modele_etudiant->getAll($nom,$mail);
+            $id = $row->id;
+            $data=array();
+            $data['etudiant']=$id;
+            $data['etude']=$etude;
+            $this->load->view('etudiant_demande_remb',$data);         
+        }
+              
         
 }

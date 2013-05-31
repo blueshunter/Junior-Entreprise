@@ -21,6 +21,19 @@ Class Modele_groupe extends CI_Model
         }
                 
     }
+    
+    function getNbEtu($etude)
+    {
+        $var=0;
+                $query3=$this->db->query("Select * from groupeEtudiant where id_etude='$etude' and etat='valide';");
+                foreach ($query3->result() as $row3) 
+                {
+                    $var++;
+                    
+                }
+                
+         return $var;
+    }
     function not_exist($Etu,$mail,$Etude)
     {
         $query1=$this->db->query("Select * from etudiant where mail='".$mail."' and nom='".$Etu."';");

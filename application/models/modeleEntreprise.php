@@ -20,6 +20,16 @@
         }
         return $row; 
     }
+    function getNom($id)
+    {
+        $query = $this->db->get_where('entrprise',array('id'=>$id));
+        if ($query->num_rows() > 0)
+        {
+           $row = $query->row(); 
+       
+        }
+        return $row->nom; 
+    }
     
     function valider($nom)
     {

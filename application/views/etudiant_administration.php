@@ -37,11 +37,15 @@
         <h3>Mes études en cours</h3>
         <ul>
             <?php
-            $query = $this->db->query("SELECT * FROM groupeEtudiant JOIN etude where groupeEtudiant.id_etude=etude.id_etude and groupeEtudiant.etat='valide' and groupeEtudiant.id_etudiant='$row->id';");
+            $query = $this->db->query("SELECT * FROM groupeEtudiant JOIN etude where groupeEtudiant.id_etude=etude.id_etude and groupeEtudiant.etat='valide' and groupeEtudiant.id_etudiant='$row->id' and etude.etat='en cours';");
             
             foreach ($query->result() as $row)
-            {
-               echo "<li><a href=".base_url('Etudes/fiche/'.$row->nom).">".str_replace('_', ' ',$row->nom)."</a></li>";
+            { 
+               echo '<li><a href='.base_url('Etudiants/demandeFrais/'.$row->id_etude.'/'.$this->session->userdata('nom').'/'.$this->session->userdata('mail')).' class="btn btn-small enabled">frais</a>';
+               echo '<a href='.base_url('Etudiants/demandeRemb/'.$row->id_etude.'/'.$this->session->userdata('nom').'/'.$this->session->userdata('mail')).' class="btn btn-small enabled">remb</a>';
+               echo "<a href=".base_url('Etudes/fiche/'.$row->nom).">".str_replace('_', ' ',$row->nom)."</a></li>";
+
+               
             }
             ?>
         </ul>

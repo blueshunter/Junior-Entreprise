@@ -9,7 +9,13 @@ class Admins extends CI_Controller
             $this->load->model('modele_admin');
             $this->load->model('modele_groupe');
             $this->load->model('modele_etude');
+            $this->load->model('modele_etudiant');
+            $this->load->model('modeleEntreprise');
+            $this->load->model('frais');
+            $this->load->model('acompte');
         }
+        
+        
 	public function index()
 	{
             if(isset($_POST['connexionAdmin'])==FALSE)
@@ -48,9 +54,15 @@ class Admins extends CI_Controller
             {
                 // modele_etude->validerEnCours
                 $this->modele_etude->validerEnCours($id);
-                $this->load->view('admin_convention_validee');
+                $this->load->view('admin_etude_validee');
             }
 
+        }
+        
+        function facture($id)
+        {
+            $this->modele_etude->terminerEtude($id);
+             $this->load->view('admin_etude_terminee');
         }
         function validationEtude($nom)
         {
@@ -108,6 +120,23 @@ class Admins extends CI_Controller
             {
                 $this->load->view('administration');
             }
+        }
+        function acompte($id)
+        {
+            if($id!='false')
+            {
+               $this->acompte->VALIDER($id);
+            }
+            $this->load->view('admin_liste_acompte');
+        }
+        
+        function frais($id)
+        {
+            if($id!='false')
+            {
+               $this->frais->VALIDER($id);
+            }
+            $this->load->view('admin_liste_frais');
         }
         
         function liste($type,$etat)

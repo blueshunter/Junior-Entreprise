@@ -21,6 +21,23 @@ Class Modele_etudiant extends CI_Model
         return $row; 
         
     }
+    
+    function getNom($id)
+    {
+        $query = $this->db->query("select * from etudiant where id=".$id.";");
+        //$query = $this->db->query("Select * from etudiant where mail=".$mail."and nom=".$nom.";");
+        if ($query->num_rows() > 0)
+        {
+           $row = $query->row(); 
+     
+           return $row->nom; 
+        }
+        else
+        {
+            return "erreur requete SQL";
+        }
+        
+    }
 
     function validCredentials($mail,$mdp)
     {

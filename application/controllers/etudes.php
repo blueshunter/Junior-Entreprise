@@ -5,6 +5,7 @@ Class Etudes extends CI_Controller
     {
         parent::__construct();
         $this->load->model('modele_etude');
+        $this->load->model('frais');
     }
     
     function nouvelleEtude()
@@ -18,6 +19,28 @@ Class Etudes extends CI_Controller
             $this->load->view('etude_form_success');
         }
         
+    }
+    
+    
+    function facture($id)
+    {
+            $data= array();
+            $row=$this->modele_etude->getInfosFacture($id);
+            $entreprise=$this->modeleEntreprise->getNom($row['id_entrprise']);
+ 
+            $data['facture']=$row['id_etude'];
+            $data['siret']="732 829 320 00074";
+            $data['date']=' ';
+            $data['entreprise']=$entreprise;
+            $data['adresse']=$row['adresse'];
+            $data['etude']=$row['id_etude'];
+            $data['prix']=$row['prix'];
+            $data['duree']=$row['duree'];
+            $data['cout']=$this->modele_etude->getPrixEtude($row['id_etude']);
+            $data['frais']=$this->frais->getMontantFrais($row['id_etude']);
+            $data['total']=$data['cout']+$data['frais'];
+            
+            $this->load->view('facture',$data);
     }
     function convention($id)
     {
