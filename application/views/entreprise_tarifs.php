@@ -15,10 +15,67 @@
     
 
         <article>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aliquam dignissim bibendum massa, sed volutpat mi sagittis et. Quisque faucibus dolor ac ipsum tincidunt id commodo erat fermentum. Phasellus turpis massa, auctor eget condimentum in, lobortis ut risus. Suspendisse molestie vestibulum mi eget lobortis. Curabitur id odio turpis. Aenean massa nisl, commodo eu tempor ac, pellentesque eu arcu. Nulla rhoncus eros sit amet nunc semper tincidunt. Etiam egestas tincidunt est a commodo. Vivamus vitae diam sit amet lorem iaculis posuere. Integer in nulla velit. Sed eros lorem, rutrum a bibendum sit amet, tincidunt a eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse vestibulum nisi sed mi elementum volutpat. Phasellus dui velit, varius eget tincidunt et, accumsan a erat. Sed sagittis molestie tellus ac facilisis.
-
-            Nulla at tempor dui. Etiam dignissim massa et lacus posuere laoreet. Phasellus auctor odio vitae dui lacinia a rutrum enim volutpat. Nullam porta, sem ut viverra porttitor, nisl urna porta dolor, ut aliquet libero orci non leo. Vivamus porttitor odio in massa euismod tincidunt. In hac habitasse platea dictumst. Donec arcu justo, blandit eget tincidunt ac, consectetur quis quam. Nunc velit neque, adipiscing nec luctus in, tristique ac mi. Quisque at elit eget mi dapibus tristique. Quisque varius, velit id iaculis hendrerit, libero nunc rhoncus ligula, ac volutpat ante lacus a arcu. Donec nec turpis purus, nec pretium elit. Nunc lacinia nisl eget purus dapibus ut adipiscing lectus pellentesque.
-            
+           <p>Les contrats réalisés avec vous prennent en considération la gestion des étudiants
+           tout au cours de l'étude ainsi que nos conseils dans la réalistion des projets.
+           Chaque étude possèdes ses propres spécificités et sont discutés pendant premières
+           réunions d'avancement.
+           </p>
+           <p>
+               tarifs standards
+               <table class='table'>                 
+                   <tr>
+                    <td>Type   </td>
+                    <td>nombre de jours   </td>
+                    <td>etudiants   </td>
+                    <td>but lucratif   </td>
+                    <td>complexité   </td>
+                    <td>ordre de prix  </td>
+                   </tr>
+                   <tr>
+                    <td>développement</td>
+                    <td>10-30 </td>
+                    <td>3-5</td>
+                    <td>non</td>
+                    <td>faible</td>
+                    <td>300 -1000 HT</td>
+                   </tr>
+                   <tr>
+                    <td>développement</td>
+                    <td>30-90</td>
+                    <td>3-5</td>
+                    <td>non</td>
+                    <td>faible</td>
+                    <td>500 - 1500 HT</td>
+                   </tr>
+                   <tr>
+                    <td>développement</td>
+                    <td>10-30</td>
+                    <td>5-10</td>
+                    <td>non</td>
+                    <td>faible</td>
+                    <td>1500 - 4000 HT</td>
+                   </tr>
+                   
+                   <td>développement</td>
+                    <td>30-90</td>
+                    <td>5-10</td>
+                    <td>non</td>
+                    <td>faible</td>
+                    <td>2500 - 5000 HT</td>
+                   </tr>
+                   
+                   <tr>
+                    <td>développement</td>
+                    <td>10-30 </td>
+                    <td>5-10</td>
+                    <td>oui</td>
+                    <td>moyen</td>
+                    <td>5000 - 7000 HT</td>
+                   </tr>
+               </table>
+           </p>
+           
+           
         </article>
     
     </div>

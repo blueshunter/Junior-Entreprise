@@ -54,7 +54,7 @@ class Admins extends CI_Controller
             {
                 // modele_etude->validerEnCours
                 $this->modele_etude->validerEnCours($id);
-                $this->load->view('admin_etude_validee');
+                $this->load->view('admin_convention_validee');
             }
 
         }

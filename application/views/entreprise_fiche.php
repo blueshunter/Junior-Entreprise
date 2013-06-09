@@ -21,7 +21,7 @@
         $row=$this->modeleEntreprise->getAll($nom);
         echo "<ul>";
         echo "<li><strong>nom</strong>    : ".$row->nom."</li>";
-        echo "<li><strong>prenom</strong> :".$row->adresse."</li>";
+        echo "<li><strong>adresse</strong> :".$row->adresse."</li>";
         echo "<li><strong>tel</strong>    :".$row->tel."</li>";
         echo "<li><strong>e-mail</strong> :".$row->mail."</li>";
         echo "<li><strong>domaine</strong>:".$row->domaine."</li>";

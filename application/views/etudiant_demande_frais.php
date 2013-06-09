@@ -2,7 +2,11 @@
     $this->load->view('template');
     $this->load->view('navbar');
 ?>
-
+<script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
 
 <div class="hero-unit">
     
@@ -15,7 +19,7 @@
     <p>Déja inscrit ?</p>
     <?php echo form_open('Etudiants/insertFrais/'.$etudiant.'/'.$etude.''); ?>
     <form class="form-inline">
-        <input type="text" class="input-small" name="date" placeholder="date"></br>
+        <input type="text" class="input-small" id="datepicker" name="date" placeholder="date"></br>
         <input type="text" class="input-small" name="montant" placeholder="montant"></br>
         <textarea row="5" name="type" placeholder="type de frais"></textarea></br>
         <?php echo form_submit("insert","soumettre"); ?>

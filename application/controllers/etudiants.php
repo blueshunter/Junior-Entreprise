@@ -141,7 +141,7 @@ class Etudiants extends CI_Controller
             $nbEtu=$this->modele_groupe->getNbEtu($etude);
             $montant = $this->acompte->getTotalAcompte($etude,$etudiant)+$_POST['montant'];
             $montantAut =($this->modele_etude->getPrixEtude($etude)*(80/100))/$nbEtu;
-            echo $montantAut;
+            //echo $montantAut;
             if (isset($_POST['insert']) == true && $this->acompte->getNbAcompte($etude,$etudiant)<3 &&$montant <=$montantAut)
             {
                 $this->acompte->insert($etude,$etudiant,$_POST['montant']);

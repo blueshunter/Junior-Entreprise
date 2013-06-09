@@ -17,6 +17,13 @@
  </div>
  <div class="hero-unit">
      <table class="table">
+         <tr>
+             <td><strong>nom de l'étude<strong></td>
+             <td><strong> etudiant</strong></td>
+             <td><strong> montant</strong></td>
+             <td> <strong>etat</strong></td>
+             <td><strong>autorisation</srtong></td>
+         </tr>
            <?php
             $li=$this->acompte->liste();
             foreach ($li as $row)

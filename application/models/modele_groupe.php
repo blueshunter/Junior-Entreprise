@@ -6,6 +6,63 @@ Class Modele_groupe extends CI_Model
         parent::__construct();
     }
     
+    function getAllByStudy($id)
+    {
+        $query = $this->db->query
+            ("
+                   select * from groupeEtudiant join etude join entrprise
+                   where groupeEtudiant.id_etude=etude.id_etude
+                   and etude.id_entrprise=entrprise.id
+                   and etude.id_etude='$id';
+            ");
+    
+        $query2 = $this->db->query
+            ("
+                   select * from etude                    
+                   where etude.id_etude='$id';
+            ");// toutes les infos pour une etude
+    
+    
+        $row2 = $query2->row_array(); //infos etude
+        $row = $query->row_array(); // infos groupe etudiant & entreprise
+        $data=array();
+        if ($query->num_rows() != 0)
+        {
+            $data['nom_etude']=$row2['nom'];
+            $data['id_convention']=$row['id_etude'];
+            $data['date_debut']=$row['date_debut'];
+            $data['nom_entreprise']=$row['nom'];
+            $data['adresse']=$row['adresse'];
+            $data['tel']=$row['tel'];
+            $data['duree']=$row['duree'];
+            $data['prix']=$row['prix'];
+
+        }
+        
+        return $data;
+    
+    
+    
+    }
+    
+    function getNameById($id)
+    {
+        $data=array();
+        $query2 = $this->db->query("SELECT * FROM groupeEtudiant join etudiant  where groupeEtudiant.id_etude= '$id';");
+        $row2 = $query2->row_array(); 
+        if ($query2->num_rows()>=0)
+        {
+            $data['result']=true;
+            $data['nom']=$row2['nom'];
+        }
+        else
+        {
+            $data['result']=false;
+            $data['nom']=' ';
+        }
+        return $data;
+    }
+    
     function liste()
     {
         $query=$this->db->query("select * from groupeEtudiant where etat = 'non valide'");
@@ -20,6 +77,12 @@ Class Modele_groupe extends CI_Model
             }
         }
                 
+    }
+    
+    function students($etude)
+    {
+        $query = $this->db->query("select * from groupeEtudiant JOIN etudiant where groupeEtudiant.id_etudiant=etudiant.id and id_etude='$etude' and groupeEtudiant.etat ='valide' ");
+        return $query->result();
     }
     
     function getNbEtu($etude)

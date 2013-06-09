@@ -5,6 +5,7 @@ Class Etudes extends CI_Controller
     {
         parent::__construct();
         $this->load->model('modele_etude');
+        $this->load->model('modele_etudiant');
         $this->load->model('frais');
     }
     
@@ -27,10 +28,10 @@ Class Etudes extends CI_Controller
             $data= array();
             $row=$this->modele_etude->getInfosFacture($id);
             $entreprise=$this->modeleEntreprise->getNom($row['id_entrprise']);
- 
+            $this->load->library('calendar');
             $data['facture']=$row['id_etude'];
             $data['siret']="732 829 320 00074";
-            $data['date']=' ';
+            $data['date']=" ";
             $data['entreprise']=$entreprise;
             $data['adresse']=$row['adresse'];
             $data['etude']=$row['id_etude'];
@@ -44,7 +45,12 @@ Class Etudes extends CI_Controller
     }
     function convention($id)
     {
-        $data= array();
+         
+
+        // appels au modèle
+        $data=$this->modele_groupe->getAllByStudy($id); //toutes les infos de l'étude
+        $r=$this->modele_groupe->students($id); // étudiants associés à l'étude
+        $data['students']=$r;       
         if(isset($_POST['print'])==FALSE)
         {
             
@@ -55,6 +61,7 @@ Class Etudes extends CI_Controller
             $data['print']="on";
         }
         $data['id']=$id;
+        //$data['etudiant']= $this->modele_etude->studentListByStudy($id);
         $this->load->view('etude_convention',$data);
                 
 
@@ -63,6 +70,8 @@ Class Etudes extends CI_Controller
     
     function fiche($nom)
     {
+        $row=$this->modele_etude->getAll($nom);
+        $data['infos']=$row;
         $data['nom']=$nom;
         $data['candidature']="false";
         $this->load->view('etude_fiche',$data);

@@ -13,10 +13,21 @@
     <h1>Etudiants</h1>
     
         <article>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aliquam dignissim bibendum massa, sed volutpat mi sagittis et. Quisque faucibus dolor ac ipsum tincidunt id commodo erat fermentum. Phasellus turpis massa, auctor eget condimentum in, lobortis ut risus. Suspendisse molestie vestibulum mi eget lobortis. Curabitur id odio turpis. Aenean massa nisl, commodo eu tempor ac, pellentesque eu arcu. Nulla rhoncus eros sit amet nunc semper tincidunt. Etiam egestas tincidunt est a commodo. Vivamus vitae diam sit amet lorem iaculis posuere. Integer in nulla velit. Sed eros lorem, rutrum a bibendum sit amet, tincidunt a eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse vestibulum nisi sed mi elementum volutpat. Phasellus dui velit, varius eget tincidunt et, accumsan a erat. Sed sagittis molestie tellus ac facilisis.
-
-            Nulla at tempor dui. Etiam dignissim massa et lacus posuere laoreet. Phasellus auctor odio vitae dui lacinia a rutrum enim volutpat. Nullam porta, sem ut viverra porttitor, nisl urna porta dolor, ut aliquet libero orci non leo. Vivamus porttitor odio in massa euismod tincidunt. In hac habitasse platea dictumst. Donec arcu justo, blandit eget tincidunt ac, consectetur quis quam. Nunc velit neque, adipiscing nec luctus in, tristique ac mi. Quisque at elit eget mi dapibus tristique. Quisque varius, velit id iaculis hendrerit, libero nunc rhoncus ligula, ac volutpat ante lacus a arcu. Donec nec turpis purus, nec pretium elit. Nunc lacinia nisl eget purus dapibus ut adipiscing lectus pellentesque.          
+            <p>Vous étudiez informatique, issu d'une formation de type DUT, BTS ou école d'ingénieur en informatique,
+            votre place est avec nous ! Soyez forts d'une nouvelle experience enrichissante dans les secteurs de l'informatique
+            et des télécomunication avec nos entreprises partenaire de la région rhône-alpes.</p>
+            <p>L'inscription a ce programme est gratuite et les études sont rémunérée par convention entre
+            vous et l'entreprise.</p>
+            <p>Dans l'éventualité de votre inscription, la participation à une étude est très simple:</br>
+                <li>vous candidatez à l'étude qui vous interèsse</li>
+                <li>Junior Entreprise évalue votre candidature et votre profil</li>
+                <li>Si vous êtes accepté, vous intégrez une équipe en tant que participant
+                ou responsable du projet.</li>
+                <li>Une fois la convention signée, le projet démarre !</li>
+            </p>
+   
             
+           
         </article>
     </div>
  </div>

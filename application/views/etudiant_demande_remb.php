@@ -3,7 +3,6 @@
     $this->load->view('navbar');
 ?>
 
-
 <div class="hero-unit">
     
     <ul class="breadcrumb">

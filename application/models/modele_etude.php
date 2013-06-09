@@ -7,6 +7,7 @@ Class Modele_Etude extends CI_Model
         parent::__construct();
         $this->load->model('modele_groupe');
         $this->load->model('modeleEntreprise');
+        $this->load->helper('array');
     }
     
     function getAll($nom)
@@ -19,6 +20,14 @@ Class Modele_Etude extends CI_Model
        
         }
         return $row;
+    }
+    
+    function studentListByStudy($id)
+    {
+       $this->load->model('modele_etudiant');
+       $query3=$this->db->query("Select * from groupeEtudiant JOIN etudiant JOIN etude where groupeEtudiant.id_etudiant=etudiant.id and groupeEtudiant.id_etude=etude.id_etude  and etude.id_etude='$id' and groupeEtudiant.etat='valide';");
+       $data=$query3->result();       
+       return $data;// a corriger
     }
     
     function getNom($id)

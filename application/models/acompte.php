@@ -8,15 +8,13 @@
      function getNbAcompte($id_etude,$id_etudiant)
      {
         $query = $this->db->query("Select * from acompte where id_etudiant='$id_etudiant' and id_etude='$id_etude' order by id_acompte desc");
-        $row = $query->row_array(); 
-        if ($query->num_rows() == 0)
+        //$row = $query->row_array(); 
+        $var=0;
+        foreach($query->result() as $Myrow)
         {
-            return 0;
-        } 
-        else
-        {
-            return $row['id_acompte'];
+            $var= $var + 1;
         }
+        return $var;
      }
     function valider($id)
     {

@@ -17,33 +17,33 @@
  <div class="hero-unit">
     
         <?php
-        $row=$this->modele_etude->getAll($nom);
+        
         echo "<ul>";
-        echo "<li><strong>etat</strong>    : ".$row->etat."</li>";
-        echo "<li><strong>date</strong>    : ".$row->date_debut."</li>";
-        echo "<li><strong>duree</strong> :".$row->duree."</li>";
-        echo "<li><strong>domaine</strong>    :".$row->domaine."</li>";
-        echo "<li><strong>description</strong> :</br><article>".$row->description."</article></li>";
+        echo "<li><strong>etat</strong>    : ".$infos->etat."</li>";
+        echo "<li><strong>date</strong>    : ".$infos->date_debut."</li>";
+        echo "<li><strong>duree</strong> :".$infos->duree."</li>";
+        echo "<li><strong>domaine</strong>    :".$infos->domaine."</li>";
+        echo "<li><strong>description</strong> :</br><article>".$infos->description."</article></li>";
         echo "</ul></br>";
         
-        if($this->session->userdata('type')=='admin'&&$this->session->userdata('logged_in')==TRUE&&$row->etat=='non valide')
+        if($this->session->userdata('type')=='admin'&&$this->session->userdata('logged_in')==TRUE&&$infos->etat=='non valide')
         {
                           
             echo form_open('Admins/validationEtude/'.$nom);
             echo'<form class="form-inline">';
             echo form_submit("validationEtude","valider l'étude");          
         }
-
-        if($this->session->userdata('type')=='etu'&&$this->session->userdata('logged_in')==TRUE&&$row->etat=='valide')
+        
+        if($this->session->userdata('type')=='etu'&&$this->session->userdata('logged_in')==TRUE&&$infos->etat=='valide')
         {
-            $query2 = $this->db->query("SELECT * FROM groupeEtudiant  where id_etude= '$row->id_etude';");
-               $row2 = $query2->row_array(); 
-                if ($query2->num_rows()>=0) // =0 ?  => un etudiant!
+            
+                $data= $this->modele_groupe->getNameById($infos->id_etude);
+                if ($data['result']==true) // =0 ?  => un etudiant!
                 {
                     echo form_open('Etudiants/candidature/'.$this->session->userdata('nom').'/'.$this->session->userdata('mail').'/'.$nom);
                      echo'<form class="form-inline">';
                     echo form_submit("candidatureEtude","candidater");    
-                } 
+                }
               
         }
 
@@ -55,23 +55,17 @@
         <h3>Etudiants</h3>
         <ul>
             <?php
-            $var=0;
-                $query3=$this->db->query("Select * from groupeEtudiant JOIN etudiant JOIN etude where groupeEtudiant.id_etudiant=etudiant.id and groupeEtudiant.id_etude=etude.id_etude  and etude.nom='$nom' and groupeEtudiant.etat='valide';");
-                foreach ($query3->result() as $row3) 
-                {
-                    $var++;
-                    $query4=$this->db->query("Select * from etudiant where id='$row3->id_etudiant';");
-                    $row4 = $query4->row_array(); 
-                    if ($query4->num_rows() != 0)
-                    {
-                        echo "<li><a href=".base_url('Etudiants/fiche/'.$row4['nom'].'/'.$row4['mail']).">".str_replace('_', ' ',$row4['nom'])."</a></li>";
-                    }
-                    
-                }
+            
+             $etudiant= $this->modele_etude->studentListByStudy($infos->id_etude);
+             foreach ($etudiant as $etu) 
+             {
+                $data=$this->modele_etudiant->getNameAndMail($etu->id_etudiant);
+                echo "<li><a href=".base_url('Etudiants/fiche/'.element('nom',$data).'/'.element('mail',$data)).">".str_replace('_', ' ',element('nom',$data))."</a></li>";
+             }
             ?>
         </ul>
         <?php
-        if($this->session->userdata('type')=='admin'&&$this->session->userdata('logged_in')==TRUE&&$row->etat!='non valide')
+        if($this->session->userdata('type')=='admin'&&$this->session->userdata('logged_in')==TRUE&&$infos->etat!='non valide')
         {
             echo "<p>listes des candidatures</p>" ;
             $this->modele_groupe->liste();
@@ -83,23 +77,24 @@
            <h3>Convention</h3>
            
            <?php
-           if($this->session->userdata('type')=='admin'&&$this->session->userdata('logged_in')==TRUE&&$row->etat=='valide')
+           $var=$this->modele_groupe->getNbEtu($infos->id_etude);
+           if($this->session->userdata('type')=='admin'&&$this->session->userdata('logged_in')==TRUE&&$infos->etat=='valide')
            {
 
-                echo'<a  href='.base_url('Admins/convention/'.$var.'/'.$row->id_etude.'').'>editer la convention</a>';
+                echo'<a  href='.base_url('Admins/convention/'.$var.'/'.$infos->id_etude.'').'>editer la convention</a>';
               
            }
-           if($this->session->userdata('type')=='etu'||$this->session->userdata('type')=='ent'&&$this->session->userdata('logged_in')==TRUE&&$row->etat=='valide')
+           if(($this->session->userdata('type')=='etu'||$this->session->userdata('type')=='ent')&&$this->session->userdata('logged_in')==TRUE&&$infos->etat=='valide')
            {
 
                 echo'<p>convention non éditée</p>';
               
            }
            
-           if($this->session->userdata('logged_in')==TRUE&&$row->etat=='en cours')
+           if($this->session->userdata('logged_in')==TRUE&&$infos->etat=='en cours')
            {
 
-                echo'<a  href='.base_url('Etudes/convention/'.$row->id_etude.'').'>afficher la convention</a>';
+                echo'<a  href='.base_url('Etudes/convention/'.$infos->id_etude.'').'>afficher la convention</a>';
               
            }
            ?>
@@ -107,23 +102,23 @@
     <div class="hero-unit">
         <h3>Facture</h3>
         <?php
-        if($this->session->userdata('type')=='admin'&&$this->session->userdata('logged_in')==TRUE&&$row->etat=='en cours')
+        if($this->session->userdata('type')=='admin'&&$this->session->userdata('logged_in')==TRUE&&$infos->etat=='en cours')
            {
 
-                echo'<a  href='.base_url('Admins/facture/'.$row->id_etude.'').'>editer la facture</a>';
+                echo'<a  href='.base_url('Admins/facture/'.$infos->id_etude.'').'>editer la facture</a>';
               
            }
-           if($this->session->userdata('type')=='etu'||$this->session->userdata('type')=='ent'&&$this->session->userdata('logged_in')==TRUE&&$row->etat=='en cours')
+           if($this->session->userdata('type')=='etu'||$this->session->userdata('type')=='ent'&&$this->session->userdata('logged_in')==TRUE&&$infos->etat=='en cours')
            {
 
                 echo'<p>facture non éditée</p>';
               
            }
            
-           if($this->session->userdata('logged_in')==TRUE&&$row->etat=='terminee')
+           if($this->session->userdata('logged_in')==TRUE&&$infos->etat=='terminee')
            {
 
-                echo'<a  href='.base_url('Etudes/facture/'.$row->id_etude.'').'>afficher la facture</a>';
+                echo'<a  href='.base_url('Etudes/facture/'.$infos->id_etude.'').'>afficher la facture</a>';
               
            }
            ?>

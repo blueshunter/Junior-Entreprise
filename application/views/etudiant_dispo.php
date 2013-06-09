@@ -19,10 +19,12 @@
         <div class="span2"></div>
         <div class="span3"></div>
         <article>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aliquam dignissim bibendum massa, sed volutpat mi sagittis et. Quisque faucibus dolor ac ipsum tincidunt id commodo erat fermentum. Phasellus turpis massa, auctor eget condimentum in, lobortis ut risus. Suspendisse molestie vestibulum mi eget lobortis. Curabitur id odio turpis. Aenean massa nisl, commodo eu tempor ac, pellentesque eu arcu. Nulla rhoncus eros sit amet nunc semper tincidunt. Etiam egestas tincidunt est a commodo. Vivamus vitae diam sit amet lorem iaculis posuere. Integer in nulla velit. Sed eros lorem, rutrum a bibendum sit amet, tincidunt a eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse vestibulum nisi sed mi elementum volutpat. Phasellus dui velit, varius eget tincidunt et, accumsan a erat. Sed sagittis molestie tellus ac facilisis.
-
-            Nulla at tempor dui. Etiam dignissim massa et lacus posuere laoreet. Phasellus auctor odio vitae dui lacinia a rutrum enim volutpat. Nullam porta, sem ut viverra porttitor, nisl urna porta dolor, ut aliquet libero orci non leo. Vivamus porttitor odio in massa euismod tincidunt. In hac habitasse platea dictumst. Donec arcu justo, blandit eget tincidunt ac, consectetur quis quam. Nunc velit neque, adipiscing nec luctus in, tristique ac mi. Quisque at elit eget mi dapibus tristique. Quisque varius, velit id iaculis hendrerit, libero nunc rhoncus ligula, ac volutpat ante lacus a arcu. Donec nec turpis purus, nec pretium elit. Nunc lacinia nisl eget purus dapibus ut adipiscing lectus pellentesque.
+            <p>Junior Entreprise prends en considération votre emploi du temps et adapte votre temps
+            de travail. Lors de l'édition de la convention, le volume horaire de l'étude sera fixé
+            avec l'assentiment de toute l'équipe et de l'entreprise partenaire.</p>
             
+            <p>Pour cette raison, la durée d'une étude n'est pas calculée en mois hommes mais en nombre de jours
+            et plus précisément en heures de travail repartis sur les horaires de l'équipe</p>
             
         </article>
     </div>

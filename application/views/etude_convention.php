@@ -1,58 +1,18 @@
 <?php
 $this->load->view('template');
+$this->load->model('modele_groupe');
 if($print=="off")
 {  
     $this->load->view('navbar');
-}
-    
-    
-    $query = $this->db->query
-            ("
-                   select * from groupeEtudiant join etude join entrprise
-                   where groupeEtudiant.id_etude=etude.id_etude
-                   and etude.id_entrprise=entrprise.id
-                   and etude.id_etude='$id';
-            ");
-    
-    $query2 = $this->db->query
-            ("
-                   select * from etude                    
-                   where etude.id_etude='$id';
-            ");
-    
-    
-    $row2 = $query2->row_array(); 
-    if ($query2->num_rows() != 0)
-    {
-        $nom_etude=$row2['nom']; //on recup nom de l'etude
-    }
-    
-
-            
-    $row = $query->row_array(); 
-    if ($query->num_rows() != 0)
-    {
-        $id_convention=$row['id_etude'];
-        $date_debut=$row['date_debut'];
-        $nom_entreprise=$row['nom'];
-        $adresse=$row['adresse'];
-        $duree=$row['duree'];
-        $tel=$row['tel'];
-        $prix=$row['prix'];
-
-       
-    }
-    
-    
-    ?>
-
+}       
+?>
 
 <div class="hero-unit">
     
-    <h2> Fiche Convention <small> <?php echo str_replace('_', ' ',$nom_etude)?></small></h2>
+    <h2> Fiche Convention <small> <?php echo str_replace('_',' ',$nom_etude);?></small></h2>
     <ul>
         <li>n° convention : <?php echo $id_convention ?></li>
-        <li>nom de l'étude:<?php echo $nom_etude ?></li>
+        <li>nom de l'étude:<?php echo str_replace('_',' ',$nom_etude) ?></li>
         <li>date :<?php echo $date_debut ?></li>
     </ul>
     
@@ -68,32 +28,49 @@ if($print=="off")
         <li>prix/journée: <?php echo $prix?></li>
     </ul>
     
+    <p>liste des étudiants<p>
+    <?php
+    
+    
+        echo '<table class="table">';
+        echo '<tr>';
+        echo '<td><strong>nom</strong></td>';
+        echo '<td><strong>prenom</strong></td>';
+        echo '<td><strong>date de naissance</strong></td>';
+        echo '<td><strong>mail</strong></td>';
+        echo '</tr>';
+        
+        foreach($students as $etu)
+        {
+            echo '<tr>';
+            echo '<td>'.$etu->nom.'</td>';
+            echo '<td>'.$etu->prenom.'</td>';
+            echo '<td>'.$etu->date_naiss.'</td>';
+            echo '<td>'.$etu->mail.'</td>';
+            echo '</tr>';
+        }
+         if($print=="off")
+         {
+            echo form_open('Etudes/convention/'.$id);
+            //echo "<form>";
+            echo form_submit("print","imprimer");
+            //echo "</form>";
+            $this->load->view('footer');
+         }
+        else
+        {
+         ?>
+            <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
+            <script src="<?php echo base_url('assets/js/jquery-1.9.1.js') ?>"></script>
+
+            <script >window.print()  
+            </script>
+        <?php
+            //redirect(base_url('Etudes/convention/'.$id));
+        }
+    ?>
+    
  </div>
 
-
- 
-
-<?php
-    if($print=="off")
-    {
-        echo form_open('Etudes/convention/'.$id);
-        //echo "<form>";
-        echo form_submit("print","imprimer");
-        //echo "</form>";
-        $this->load->view('footer');
-    }
-    else
-    {
-        ?>
-    <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
-    <script src="<?php echo base_url('assets/js/jquery-1.9.1.js') ?>"></script>
-        
-       <script >window.print()  
-        </script>
-        
-        <?php
-        //redirect(base_url('Etudes/convention/'.$id));
-    }
- ?>
 
 

@@ -31,7 +31,7 @@
      }
      function Liste()
      {
-         $query = $this->db->query("select * from frais where etat='non rembourse';");
+         $query = $this->db->query("select * from frais where etat='non remboursee';");
          return $query->result();
      }
      function getAllByEtude($id_etude)
